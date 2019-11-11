@@ -8,7 +8,7 @@ app.get('/', (req,res) => {
 });
 
 //////////////////// IN  CASE OF  EMERGENCY ////////////////////////////
-// app.use(cors()); 
+// app.use(cors()); /////
 
 const PORT = process.env.PORT || 80;
 
