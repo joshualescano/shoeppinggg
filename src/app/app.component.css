@@ -1,0 +1,40 @@
+
+a{
+    color: white;
+}
+
+#buttons{
+    background-color:#f56b22;
+    border-color: #f56b22;
+}
+#buttons:hover{
+    background-color:white;
+    border-color: #f56b22;
+    color:#f56b22 ;
+}
+body{
+    background-color: #E9EBEE;
+    font-family: inherit;
+}
+#main1{
+    margin: 7% 2% 2% 2%;
+    padding: 3% 3% 1% 3%;
+    background-color:white;
+    box-shadow: .5px 1px #888888;
+}
+#main2{
+    background-color:white;
+    margin: 1% 4% 2% 4%;
+    padding: 1% 1% 3% 1%;
+}
+
+.form-control{
+    background-color: #F2F2F2;
+}
+
+#logo:hover{
+    border: 4px solid #343A40;
+}
+#logindesign{
+    background-color: teal;
+}

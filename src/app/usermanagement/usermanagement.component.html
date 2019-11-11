@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
+    <div class="col-xl-2">
+        <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo"
+            style=" width: 50%; height: 50%;">
+    </div>
+
+    <div class="col-xl-8">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" >Order List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >User Management</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="col-xl-2" id="navRight">
+        <ul class="navbar-nav">
+            <li class="nav-item" id="logindesign">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#login">LOG OUT </a>
+            </li>
+            <li class="nav-item">
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="col-xl-11.5" id="main1" style="padding:5%">
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-xl-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Birthday</th>
+                        <th>Phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customers">
+                        <td>{{customer.username}}</td>
+                        <td>{{customer.password}}</td>
+                        <td>{{customer.cusfName}}</td>
+                        <td>{{customer.cuslName}} </td>
+                        <td>{{customer.address}}</td>
+                        <td>{{customer.birthday}} </td>
+                        <td>{{customer.phone}} </td>
+                        <td>
+                                <button (click)="updateCustomer(customer._id)" class="btn btn-success" id="buttons">Update</button>
+                            </td>
+                            <td>
+                                <button (click)="deleteCustomer(customer._id)" class="btn btn-danger" >Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xl-1">
+        </div>
+    </div>
+</div>

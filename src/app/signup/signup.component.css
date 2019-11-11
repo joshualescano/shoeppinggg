@@ -1,0 +1,73 @@
+
+a{
+    color: white;
+}
+
+#buttons{
+    background-color:#f56b22;
+    border-color: #f56b22;
+}
+#buttons:hover{
+    background-color:white;
+    border-color: #f56b22;
+    color:#f56b22 ;
+}
+#btnSignUp:hover{
+    background-color: #f56b22;
+    color: white;
+}
+body{
+    background-color: #E9EBEE;
+    font-family: inherit;
+}
+#main1{
+    margin: 3% 2% 2% 4%;
+    padding: 3% 3% 1% 5%;
+    background-color:white;
+
+    
+}
+#main2{
+    background-color:white;
+    margin: 1% 4% 2% 4%;
+    padding: 1% 1% 3% 5%;
+}
+#title{
+    color:#F38E58;
+}
+
+#items{
+    background-color:white;
+    height: 400px;
+    margin: 0% 4% 1% 4%;
+    padding-bottom: 10%;
+
+    
+}
+#itemLabel{
+    font-size: 80%;
+}
+
+
+#image{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #DDDFE2;
+}
+#samp{
+    text-align: center;
+    background-color:white;
+    padding: 3%;
+    border-bottom: 1.5px solid #DDDFE2;
+
+}
+.form-control{
+    background-color: #F2F2F2;
+}
+
+#logo:hover{
+    border: 4px solid #343A40;
+}
+#logindesign{
+    background-color: teal;
+}

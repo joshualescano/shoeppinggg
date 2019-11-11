@@ -1,0 +1,155 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
+        <div class="col-xl-2">
+            <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" routerLink="/home" routerLinkActive="linkActive"  id="logo" style=" width: 50%; height: 50%; cursor: pointer;" >
+        </div>
+      
+        <div class="col-xl-8">
+          <nav class="navbar navbar-expand-sm " >
+            <form class="form-inline" action="/action_page.php">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" id="searchBar">
+              <button class="btn btn-success" type="submit" id="buttons">Search</button>
+            </form>
+          </nav>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Adidas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Nike</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Vans</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sketchers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sperry</a>
+              </li>
+      
+            </ul>
+          </div>
+          <div class="col-xl-2" id="navRight">
+              <ul class="navbar-nav" >
+                  <li class="nav-item" id="logindesign">
+                  <a class="nav-link" href="#" data-toggle="modal" data-target="#login">LOGIN </a>
+                  </li>
+                  <li class="nav-item">
+                  </li>
+              </ul>
+              </div>
+        </nav>
+
+<div class="col-xl-11.5" id="main1">
+
+        <div class="row">
+            <div class="col-xl-4"> </div>
+            <div class="col-xl-4"> 
+                <form #validForm="ngForm" (submit)="addCustomer()" class="was-validated">
+                    <div class="form-group">
+                        <label>First Name:</label>
+                        <input type="text" class="form-control" placeholder="Enter First Name" onkeyup="this.value=this.value.replace(/[^a-zA-Z ]+/,'')" name="cusfName" [(ngModel)]="cusfName" required> 
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name:</label> 
+                        <input type="text" class="form-control" placeholder="Enter Last Name" onkeyup="this.value=this.value.replace(/[^a-zA-Z ]+/,'')" name="cuslName" [(ngModel)]="cuslName" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number:</label> 
+                        <input type="text" class="form-control" placeholder="Enter Contact Number (11 Numbers)" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="11" name="phone" [(ngModel)]="phone" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Adress:</label> 
+                        <input type="text" class="form-control" placeholder="Enter Address" onkeyup="this.value=this.value.replace(/[^a-zA-Z-#-.-,\d ]+/,'')" name="address" [(ngModel)]="address" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+
+                   
+                    <div class="form-group">
+                        <label>Username:</label> 
+                        <input type="text" class="form-control" placeholder="Enter username" name="username" [(ngModel)]="username" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label> 
+                        <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="password" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Pssword:</label> 
+                        <input type="password" class="form-control" placeholder="Confirm password" name="pswd" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <button type="button" class="btn btn-default" id="btnSignUp" routerLink="/home" routerLinkActive="linkActive">CANCEL</button> &nbsp;
+                    <button type="submit" class="btn btn-success" *ngIf="validForm.valid" id="send">SIGN UP</button>
+                </form>
+            </div>
+            <div class="col-xl-4"> </div>
+        </div>
+
+
+
+             <!-- Modal Login-->
+      <div class="modal fade" id="login" role="dialog">
+            <div class="modal-dialog modal-lg">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+      
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="col-sm-4"></div>
+                    
+                    <div class="col-sm-4" style="padding-bottom: 10%; text-align: center;">
+                        <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" style=" width: 70%; height: 50%;" ><br/><br/>
+                        <input type="text" class="form-control" placeholder="USERNAME"> &nbsp;
+                        <input type="password" class="form-control"  placeholder="PASSWORD"> &nbsp; &nbsp; &nbsp;
+      
+                        <div style="margin-top: 5%;">
+                                <a class="nav-link" routerLink="/signup" routerLinkActive="linkActive" id="btnSignUp" >SIGN UP</a>
+                            <button type="button" class="btn btn-success" id="buttons">LOGIN</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+        
+
+
+</div>
+
+<script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
