@@ -35,7 +35,7 @@ export class UsermanagementComponent {
     });
   }
 
-  updateCustomer(id){
+  async updateCustomer(id){
     var customer = new Customer();
     customer.username = this.username;
     customer.password = this.password;
@@ -45,10 +45,20 @@ export class UsermanagementComponent {
     customer.birthday = this.birthday;
     customer.phone = this.phone;
 
-    this.customerService.updateCustomer(customer, id).subscribe((data)=>{
-      console.log(data);
-      this.getCustomers()
+    const willUpdate = await swal({
+      title: "Are you sure do you want to Update?",
+      text: " Click outside if no",
+      icon: "warning",
+      dangerMode: true,
     });
+     
+    if (willUpdate) {
+      this.customerService.updateCustomer(customer, id).subscribe((data)=>{
+        console.log(data);
+        this.getCustomers()
+      });
+      swal("Updated!", "Item has been updated!", "success");
+    } 
   }
   
   async deleteCustomer(id){

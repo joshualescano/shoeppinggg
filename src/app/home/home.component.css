@@ -23,6 +23,14 @@ body{
     margin: 1% 4% 2% 4%;
     padding: 1% 1% 3% 1%;
 }
+#main3{
+    background-color:white;
+    margin: 1% 4% 2% 4%;
+    padding: 1% 1% 3% 1%;
+}
+#main3:hover{
+    margin-top: -5%;
+}
 #title{
     padding: 1%;
     color:#F38E58;
@@ -30,20 +38,6 @@ body{
     border-left: 1.5px solid #DDDFE2;
 }
 
-#items{
-    background-color:white;
-    height: 400px;
-    margin: 0% 4% 1% 4%;
-    padding-bottom: 7%;
-    cursor: pointer;
-}
-
-#items:hover{
-    background-color: #F1F1F1;
-}
-#itemLabel{
-    font-size: 80%;
-}
 
 
 #image{
@@ -52,7 +46,7 @@ body{
     border: 1px solid #DDDFE2;
 }
 #samp{
-    text-align: center;
+    text-align: left;
     background-color:white;
     padding: 3%;
     border-bottom: 1.5px solid #DDDFE2;
@@ -74,9 +68,6 @@ body{
 #logo:hover{
     border: 4px solid #343A40;
 }
-#logindesign{
-    background-color: teal;
-}
 html{
     overflow-y: scroll;
 }
@@ -85,4 +76,75 @@ html{
 .form-control-rounded{
     border-radius: 25px;
     border-color: #E7F0F6;
+}
+
+
+#items{
+    background-color:white;
+    height: 400px;
+    margin: 0% 4% 1% 4%;
+    padding-bottom: 7%;
+    cursor: pointer;
+}
+
+#items:hover{
+    background-color: #F1F1F1;
+}
+#itemLabel{
+    font-size: 90%;
+    margin-left: 10%;
+    text-transform: uppercase;
+}
+
+#itemLabel1{
+    font-size: 100%;
+    margin-left: 10%;
+    color:#F38E58;
+}
+#stocks{
+    font-size: 80%;
+    text-align: right;
+    padding-top:5% ; 
+    color:#D71829;   
+}
+#items{
+    background-color:white;
+    height: 400px;
+    margin: 0% 4% 1% 4%;
+    padding-bottom: 7%;
+    cursor: pointer;
+}
+
+#items:hover{
+    background-color: #F1F1F1;
+}
+#itemLabel{
+    font-size: 90%;
+    margin-left: 10%;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+#itemLabel1{
+    font-size: 100%;
+    margin-left: 10%;
+    color:#F38E58;
+    text-align: left;
+}
+#stocks{
+    font-size: 80%;
+    text-align: right;
+    padding-top:5% ; 
+    color:#D71829;   
+}
+#items3{
+    background-color:white;
+    height: 400px;
+    margin: 5% 4% 1% 4%;
+    padding-bottom: 7%;
+    cursor: pointer;
+}
+
+#items3:hover{
+    margin-top: 3%;
 }

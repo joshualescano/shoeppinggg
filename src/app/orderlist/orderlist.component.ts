@@ -10,22 +10,22 @@ export class OrderlistComponent implements OnInit {
 
  orders: any = [
     {
-      "customerID": "1",
-      "productID": "1",
+      "cusUsername": "joshualescano",
+      "prodName": "Adidas Ultra Boost",
       "orderQuantity": 2,
       "totalPrice": 6000,
     },
     {
-      "customerID": "2",
-      "productID": "1",
+      "cusUsername": "thearose",
+      "prodName": "Adidas Ultra Boost",
       "orderQuantity": 4,
       "totalPrice": 12000,
     },
     {
-      "customerID": "1",
-      "productID": "2",
-      "orderQuantity": 3,
-      "totalPrice": 12000,
+      "cusUsername": "damasomarilou",
+      "prodName": "Adidas Ultra Boost",
+      "orderQuantity": 1,
+      "totalPrice": 3000,
     }
   ]
 

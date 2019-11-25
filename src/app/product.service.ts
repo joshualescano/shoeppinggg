@@ -50,4 +50,9 @@ export class ProductService {
  deleteProduct(id:string){
     return this.http.delete(this.url + '/product/' +id);
   }
+
+  selectItem(id:string){
+    return this.http.get<any[]>
+    (this.url + '/product'+id);
+  }
  }

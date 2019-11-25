@@ -34,22 +34,6 @@ body{
     border-left: 1.5px solid #DDDFE2;
 }
 
-#items{
-    background-color:white;
-    height: 400px;
-    margin: 0% 4% 1% 4%;
-    padding-bottom: 7%;
-    cursor: pointer;
-}
-
-#items:hover{
-    background-color: #F1F1F1;
-}
-#itemLabel{
-    font-size: 80%;
-}
-
-
 #image{
     width: 100%;
     height: 100%;
@@ -104,4 +88,48 @@ body{
 
 html{
     overflow-y: scroll;
+}
+
+#items{
+    background-color:white;
+    height: 400px;
+    margin: 0% 4% 1% 4%;
+    padding-bottom: 7%;
+}
+
+#items:hover{
+    background-color: #F1F1F1;
+}
+#itemLabel{
+    font-size: 90%;
+    margin-left: 10%;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+#itemLabel1{
+    font-size: 100%;
+    margin-left: 10%;
+    color:#F38E58;
+    text-align: left;
+}
+#stocks{
+    font-size: 80%;
+    text-align: right;
+    padding-top:5% ; 
+    color:#D71829;   
+}
+#items3{
+    background-color:white;
+    height: 400px;
+    margin: 5% 4% 1% 4%;
+    padding-bottom: 7%;
+}
+.table1{
+    border:1px solid #DEE2E6;
+    font-family: calibri;
+}
+
+#items3:hover{
+    margin-top: 3%;
 }

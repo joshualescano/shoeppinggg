@@ -18,6 +18,11 @@ export class AuthGuardService {
   }
   logoutUser(){
     localStorage.removeItem('token')
+    localStorage.removeItem('username')
     this.router.navigate(['/home'])
+  }
+
+  getUsername(){
+    return localStorage.getItem('username');    
   }
 }

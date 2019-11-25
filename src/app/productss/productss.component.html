@@ -6,14 +6,22 @@
   
     <div class="col-xl-8">
       <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">Products</a>
+          <li class="nav-item"  style="width:13%;">
+            <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">
+              <i class="material-icons prefix"> star</i> 
+              Products</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" >Order List</a>
+          <li class="nav-item" style="width:13%;">
+            
+            <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" > 
+              <i class="material-icons prefix"> business_center</i> 
+              Order List</a>
+
           </li>
-          <li class="nav-item">
-            <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >User Management</a>
+          <li class="nav-item" style="width:20%;">
+            <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >
+              <i class="material-icons prefix">group</i> 
+              User Management</a>
           </li>
   
         </ul>
@@ -21,21 +29,20 @@
       <div class="col-xl-2" id="navRight">
           <ul class="navbar-nav" >
               <li class="nav-item" id="logindesign">
-              <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT </a>
+              <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">Logout
+                <i class="material-icons prefix">exit_to_app</i> </a>
+
               </li>
               <li class="nav-item">
               </li>
           </ul>
-          </div>
-    
-  
-    
+          </div>   
     </nav>
 
     <div class="col-xl-11.5" id="main1" style="padding:5%">
 
-            <h1 style="font-family:cocogoose; color:rgb(226, 105, 19);         border-bottom: 1.5px solid #DDDFE2;
-            border-left: 1.5px solid #DDDFE2; padding: 1%;">Add or Update products</h1>
+            <h2 style="font-family:cocogoose; color:rgb(226, 105, 19);         border-bottom: 1.5px solid #DDDFE2;
+            border-left: 1.5px solid #DDDFE2; padding: 1%;">Add or Update products</h2>
             <p style="font-family:calibri;">Welcome to shoepping Admin? 
                 <a style="font-family:cocogoose; color:rgb(241, 146, 78); font-size: small;" routerLink="/signup" routerLinkActive="linkActive">Create it here</a>
             </p>
@@ -44,15 +51,24 @@
         <div class="row">
             <div class="col-xl-1"></div>
             <div class="col-xl-10">
-                    <form #validForm="ngForm" (submit)="submitForm()">
+                    <form #validForm="ngForm" (submit)="addProduct()">
+                            <i class="material-icons prefix">info_outline</i> &nbsp;
                             <label class="label1">Product Name:</label>
-                             <input type="text"  placeholder="Insert Product Name" name="name" [(ngModel)]="name"  class="form-control form-control-rounded" required > <br>
+                             <input type="text"  placeholder="What the product name" name="name" [(ngModel)]="name"  class="form-control form-control-rounded" required > <br>
+                            
+                             <i class="material-icons prefix">local_offer</i> &nbsp;
                              <label class="label1">Product Brand:</label>
-                             <input type="text" placeholder="Insert Brand" name="brand" [(ngModel)]="brand" class="form-control form-control-rounded" required> <br>
+                             <input type="text" placeholder="What is the product brand" name="brand" [(ngModel)]="brand" class="form-control form-control-rounded" required> <br>
+                             
+                             <i class="material-icons prefix">monetization_on</i> &nbsp;
                              <label class="label1">Product Price:</label>              
-                             <input type="number"  placeholder="Insert Price" name="price" [(ngModel)]="price" class="form-control form-control-rounded" required > <br>
-                             <label class="label1">Quantity:</label>
-                             <input type="number" placeholder="Insert Quantity" name="quantity" [(ngModel)]="quantity" class="form-control form-control-rounded" required > <br>
+                             <input type="number"  placeholder="How much is the cost of the product" name="price" [(ngModel)]="price" class="form-control form-control-rounded" required > <br>
+                             
+                             <i class="material-icons prefix">storage</i> &nbsp;
+                             <label class="label1">No. of stocks:</label>
+                             <input type="number" placeholder="How many stocks available " name="quantity" [(ngModel)]="quantity" class="form-control form-control-rounded" required > <br>
+                             
+                             <i class="material-icons prefix">photo_size_select_actual</i> &nbsp;
                              <label class="label1">Insert Image:</label> 
                       
 
@@ -83,6 +99,7 @@
                              <input #file type="file" accept='image/*' (change)="preview(file.files)" name="image" [(ngModel)]="image" class="form-control-file" required />
                             <img [src]="imgURL" height="200" *ngIf="imgURL" name="i" [(ngModel)]="i"> <br> <br> 
 
+                            <i class="material-icons prefix">description</i> &nbsp;
                             <label class="label1">Descripion:</label> 
                             <textarea class="form-control" rows="5" name="description" [(ngModel)]="description"></textarea> <br> 
                             

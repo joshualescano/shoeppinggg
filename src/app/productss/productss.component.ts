@@ -38,15 +38,7 @@ export class ProductssComponent {
   percentDone: any = 0;
   products = []; */
 
-  constructor(private productService:ProductService, private authGuardService:AuthGuardService// public fb: FormBuilder, public router: Router,
-    ){
-      /*  // Reactive Form
-        this.form = this.fb.group({
-          name: [''],
-          image: [null]
-        }) */
-      
-    
+  constructor(private productService:ProductService, private authGuardService:AuthGuardService){
 
   }
   ngOnInit(){
@@ -65,7 +57,7 @@ export class ProductssComponent {
     product.brand = this.brand;
     product.price = this.price;
     product.quantity = this.quantity;
-    product.image = this.image;
+  // product.image = this.image;
     product.description = this.description; 
 
   //  const formData = new FormData();
@@ -82,9 +74,7 @@ export class ProductssComponent {
     this.brand = "";
     this.price = null;
     this.quantity = null;
-    //this.i = false;
-    //this.image = false;
-
+    this.description = "";
   } 
 
     // Image Preview

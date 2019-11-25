@@ -1,41 +1,54 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
-        <div class="col-xl-2">
-            <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo" style=" width: 50%; height: 50%;" >
-        </div>
-      
-        <div class="col-xl-8">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                    <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >Products</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">Order List</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >User Management</a>
+    <div class="col-xl-2">
+        <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo" style=" width: 50%; height: 50%;" >
+    </div>
+  
+    <div class="col-xl-8">
+      <ul class="navbar-nav">
+          <li class="nav-item"  style="width:13%;">
+            <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >
+              <i class="material-icons prefix"> star</i> 
+              Products</a>
+          </li>
+          <li class="nav-item" style="width:13%;">
+            
+            <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)"> 
+              <i class="material-icons prefix"> business_center</i> 
+              Order List</a>
+
+          </li>
+          <li class="nav-item" style="width:20%;">
+            <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >
+              <i class="material-icons prefix">group</i> 
+              User Management</a>
+          </li>
+  
+        </ul>
+      </div>
+      <div class="col-xl-2" id="navRight">
+          <ul class="navbar-nav" >
+              <li class="nav-item" id="logindesign">
+              <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">Logout
+                <i class="material-icons prefix">exit_to_app</i> </a>
+
               </li>
-      
-            </ul>
-          </div>
-          <div class="col-xl-2" id="navRight">
-              <ul class="navbar-nav" >
-                  <li class="nav-item" id="logindesign">
-                  <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT</a>
-                  </li>
-                  <li class="nav-item">
-                  </li>
-              </ul>
-              </div>
-        
-      
-        
-        </nav>
+              <li class="nav-item">
+              </li>
+          </ul>
+          </div>   
+    </nav>
 
 <div class="col-xl-11.5" id="main1" style="padding:5%">
+        <h2 style="font-family:cocogoose; color:rgb(226, 105, 19);
+        border-bottom: 1.5px solid #DDDFE2;
+        border-left: 1.5px solid #DDDFE2; padding: 1%;">List of all orders</h2>
+        <br>
+
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-xl-10">
-            <table class="table table-striped">
+            <table class="table table-striped table1">
                 <thead>
                     <tr>
                         <th>Customer Name</th>
@@ -47,12 +60,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let order of orders">
-                        <td><input type="text" class="form-control" value="{{order.customerID}}"> </td>
-                        <td><input type="text" class="form-control" value="{{order.productID}}"> </td>
-                        <td><input type="text" class="form-control" value="{{order.orderQuantity}}"> </td>
-                        <td><input type="text" class="form-control" value="{{order.totalPrice}}"> </td>
+                        <td>{{order.cusUsername}}</td>
+                        <td>{{order.prodName}}</td>
+                        <td>{{order.orderQuantity}}</td>
+                        <td>{{order.totalPrice}}</td>
                         <td>
-                            <button type="submit" class="btn btn-success" id="buttons">Done</button>
+                            <i class="material-icons form-control-rounded"  style="cursor:pointer;">check_circle</i>
                         </td>
                     </tr>
                 </tbody>
@@ -60,5 +73,41 @@
         </div>
         <div class="col-xl-1">
         </div>
+    </div> <br><br>
+
+
+    <h2 style="font-family:cocogoose; color:rgb(226, 105, 19);
+    border-bottom: 1.5px solid #DDDFE2;
+    border-left: 1.5px solid #DDDFE2; padding: 1%;">Delivered orders</h2>
+    <br>
+
+<div class="row">
+    <div class="col-xl-1"></div>
+    <div class="col-xl-10">
+        <table class="table table-striped table1">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Product Name</th>
+                    <th>Order Quantity</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.cusUsername}}</td>
+                    <td>{{order.prodName}}</td>
+                    <td>{{order.orderQuantity}}</td>
+                    <td>{{order.totalPrice}}</td>
+                    <td>
+                        <i class="material-icons form-control-rounded"  style="cursor:pointer;">remove_circle</i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <div class="col-xl-1">
+    </div>
+</div>
 </div>

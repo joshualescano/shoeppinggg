@@ -69,7 +69,8 @@ getCustomers(){
       swal("Error!", "username or password not correct!", "error");
      }
       else if(res.length!=0 && res.msg == "customer"){
-        localStorage.setItem('token',res.token)
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('username',res.customer.username);
         swal("Welcome!", "username and password match!", "success");
 
         setTimeout(() =>{

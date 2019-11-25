@@ -1,3 +1,7 @@
 html{
     overflow-y: scroll;
 }
+.table1{
+    border:1px solid #DEE2E6;
+    font-family: calibri;
+}

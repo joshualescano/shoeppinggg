@@ -226,38 +226,20 @@ app.get('/product', (req, res) => {
 });
 
 ////////////// test 1////////////
-app.post('/product', upload.single('image'), urlEncoded, (req, res) => {
-
-    var product = new Product({
+app.post('/product', upload.single('image'),urlEncoded, (req, res, next) => {
+    const url = req.protocol + '://' + req.get('host')
+    const product = new Product({
         name: req.body.name,
         brand: req.body.brand,
         price: req.body.price,
         quantity: req.body.quantity,
         description: req.body.description,
-        image: req.file.path,
-    });
-    product.save((err, data) => {
-        if(err) res.json({"msg":"Invalid Request"});
-        res.json(data);
-    });
-}); 
-
-////////////////// test 2 ////////////////////////
-// POST User
-/*app.post('/product', upload.single('image'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host')
-    const product = new Product({
-      name: req.body.name,
-      image: url + '/public/' + req.file.filename
+     //   image: url + '/public/' + req.file.filename
     });
     product.save().then(result => {
       console.log(result);
       res.status(201).json({
         message: "User registered successfully!",
-        userCreated: {
-          name: result.name,
-          image: result.image
-        }
       })
     }).catch(err => {
       console.log(err),
@@ -265,12 +247,9 @@ app.post('/product', upload.single('image'), urlEncoded, (req, res) => {
           error: err
         });
     })
-  }) */
+  }) 
   
-
-
-
-app.put('/product/:id', urlEncoded, (req, res) => {
+app.put('/product/:id', urlEncoded,verifyToken, (req, res) => {
     Product.updateOne({_id:req.params.id},{
         name: req.body.name,
         brand: req.body.brand,
@@ -284,7 +263,7 @@ app.put('/product/:id', urlEncoded, (req, res) => {
     });
 });
 
-app.delete('/product/:id', (req, res) => {
+app.delete('/product/:id',verifyToken, (req, res) => {
     Product.deleteOne({_id:req.params.id},(err,data) => {
     if(err) res.json({msg:'Invalid Request'});
         res.json(data);
@@ -292,15 +271,8 @@ app.delete('/product/:id', (req, res) => {
 });
 
 
-/*const PORT = 8080;
-app.listen(PORT,(err) => {
-    if(err) throw err;
-    console.log(`Server running at port ${PORT}`);
-    }
-); */
-
 /////////////////////// Order ////////////////////////////////////////
-app.get('/order',verifyToken, (req, res) => {
+app.get('/order', (req, res) => {
     Order.find({},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
@@ -313,6 +285,7 @@ app.post('/order',verifyToken, urlEncoded, (req, res) => {
         prodName: req.body.prodName,
         orderQuantity: req.body.orderQuantity,
         totalPrice: req.body.totalPrice,
+        buyNow: req.body.buyNow
     });
     order.save((err, data) => {
         if(err) res.json({"msg":"Invalid Request"});
@@ -355,6 +328,7 @@ function verifyToken(req,res,next){
     req.username = payload.subject
     next()
 }
+
 
 //////////////////// IN  CASE OF  EMERGENCY ////////////////////////////
 // app.use(cors()); /////

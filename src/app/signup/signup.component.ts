@@ -71,6 +71,5 @@ export class SignupComponent {
         this.router.navigate(['/cushome']);
        }, 2000);
     }
-    
   }
 }

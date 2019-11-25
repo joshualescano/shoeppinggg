@@ -1,230 +1,194 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
-        <div class="col-xl-2">
-            <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" routerLink="/cushome" routerLinkActive="linkActive"  id="logo" style=" width: 50%; height: 50%; cursor: pointer;" >
-        </div>
-      
-        <div class="col-xl-8">
-          <nav class="navbar navbar-expand-sm " >
-              <form class="form-inline" action="/action_page.php">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-rounded-search" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append ">
-                      <span class="input-group-text form-control-rounded-search" id="basic-addon2">Search</span>
-                    </div>
-                  </div>
-                </form>
-          </nav>
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Adidas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Nike</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Vans</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sketchers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sperry</a>
-              </li>
-      
-            </ul>
-          </div>
-          <div class="col-xl-2" id="navRight">
-              <ul class="navbar-nav" >
-                  <li class="nav-item">username: </li>  
-                  <li class="nav-item" id="logindesign">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#login">CART</a>
+    <div class="col-xl-2">
+        <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" routerLink="/home" routerLinkActive="linkActive"  id="logo" style=" width: 50%; height: 50%; cursor: pointer;" >
+    </div>
+  
+    <div class="col-xl-8">
+        <nav class="navbar navbar-expand-sm " >
+            <form class="form-inline" action="/action_page.php">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-rounded" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append form-control-rounded">
+                    
+                  <span class="input-group-text form-control-rounded" id="basic-addon2">                    
+                    <i class="tiny material-icons right" >search</i> </span>
+                </div>
+              </div>
+        </form>
+      </nav>
+      <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Adidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Nike</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Vans</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sketchers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sperry</a>
+          </li>
+  
+        </ul>
+      </div>
+          <div class="col-xl-6" id="navRight">
+              <ul class="navbar-nav" > 
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login" name="cusUsername" [(ngModel)]="cusUsername" >{{username}}&nbsp;
+                        <i class="material-icons prefix">account_circle</i> </a>
+                    </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="#" data-toggle="modal" data-target="#cart">Cart &nbsp;
+                      <i class="material-icons prefix">shopping_cart</i> </a>
                   </li>
                   <li class="nav-item">
-                  <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT</a>
+                    <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">Logout &nbsp;
+                      <i class="material-icons prefix">exit_to_app</i> </a>
                   </li>
               </ul>
-              </div>      
+          </div>      
    </nav>
         
 
-<div class="col-xl-11.5" id="main1">
-    <h4 id="title"> MOST POPULAR SHOES</h4>
-    <div class="col-xl-11" id="main2">
-      
-      <div class="row" id="row1">
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/1.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons" >ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-  
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/2.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons">ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-  
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/n2.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons" >ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-      </div>
-    </div>
-  
-  
+<div class="col-xl-12" id="main1">  
     <h4 id="title"> DAILY DISCOVER</h4>
     <div class="col-xl-11" id="main2">
-      
       <div class="row">
-          <div class="col-xl-3" id="items">
+          <div class="col-xl-3" id="items3"  *ngFor="let product of products">
               <img src="../assets/image/s1.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
+            <div class="row" style="height: 30%;">
+                <div class="col-xl-5" id="samp">
+                    <h6 id="itemLabel">{{product.name}}</h6>
+                    <h6 id="itemLabel1">php. {{product.price}}</h6>
                 </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons" >ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-  
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/s2.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons">ADD TO CART</button>
+                <div class="col-xl-7" id="samp">
+                    <button type="button" class="btn btn-success" (click)="selectItem(product._id)"  data-toggle="modal" data-target="#selectItemModal" id="buttons" style="width: 100%;" >
+                        ADD TO CART
+                        <i class="material-icons prefix">add_shopping_cart</i></button>
+                    <h6 id="stocks">No. of stocks {{product.quantity}}</h6>
                 </div>
             </div>
           </div>
-  
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/n1.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons">ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-      
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/v1.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons">ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-  
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/sp1.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons" >ADD TO CART</button>
-                </div>
-            </div>
-          </div>
-  
-          <div class="col-xl-3" id="items">
-              <img src="../assets/image/v2.jpg" class="img" alt="Cinque Terre" id="image">
-            <div class="row">
-                <div class="col-xl-6" id="samp">
-                    <h6 id="itemLabel">NAME</h6>
-                    <h6 id="itemLabel">PRICE</h6>
-                </div>
-                <div class="col-xl-6" id="samp">
-                    <button type="button" class="btn btn-success" id="buttons" >ADD TO CART</button>
-                </div>
-            </div>
-          </div>        
-      </div>
+        </div>
     </div>
-  
-  
-  
-      <!-- Modal Login-->
-      <div class="modal fade" id="login" role="dialog">
+</div>
+
+
+      <div class="modal fade" id="selectItemModal" role="dialog">
+          <div class="modal-dialog modal-lg" >
+            <div class="modal-content" style="width: 120%;">
+              <div class="modal-header">
+                  <h1 style="color:#F38E58;"> &nbsp; &nbsp;Php.</h1>
+                  <h1 style="color:#F38E58;" name="totalPrice" [(ngModel)]="totalPrice">{{products2.price}}</h1>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <div class="col-sm-12" style="padding-bottom: 1%; text-align: center;">        
+                      <div class="row">
+                          <div class="col-xl-6" style="padding:2%">
+                              <img src="../assets/image/1.jpg" class="img" alt="Cinque Terre" id="image">
+                          </div>
+                  
+                          <div class="col-xl-6" style="padding:5%;" >
+                            <form></form>
+                              <h1 name="prodName" [(ngModel)]="prodName"> {{products2.name}}</h1><br>
+                              <div class="row">
+                                  <div class="col-xl-12">
+                                      <div class="form-group">
+                                          <h3 style="text-align: justify;" name="cusUsername" [(ngModel)]="cusUsername" >{{username}}&nbsp;</h3>
+                                          <p style="text-align: justify;">&nbsp; &nbsp;  {{products2.description}}</p>
+                                      </div>
+                                  </div>
+                              </div> <br>
+                              <div class="row">
+                                  <div class="col-xl-6">
+                                      <div class="form-group">
+                                          <label style="text-align: left;">How many shoes you will buy?</label>
+                                          <input type="text" class="form-control" name="orderQuantity" [(ngModel)]="orderQuantity" placeholder="1"
+                                              onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+                                      </div>
+                                  </div>
+                                  <div class="col-xl-4" >
+                                      <p style="text-align: right;"><b>No. of stocks:</b></p>
+                                  </div>
+                                  <div class="col-xl-2" >
+                                      <label for="usr"style="color:#F38E58;"> {{products2.quantity}}</label>
+                                  </div>
+                              </div><br><br><br><br>
+                  
+                              <div class="row">
+                                  <div class="col-xl-6">
+                                      <button type="submit" class="btn btn-success" style="width: 100%;" id="buttons" data-dismiss="modal" >
+                                          Add to Cart <i class="material-icons prefix">add_shopping_cart</i>
+                                        </button>
+                                  </div>
+
+                                  <div class="col-xl-6">
+                                      <button type="button" class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#buynow">Buy Me
+                                          <i class="material-icons prefix">mood</i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>  
+              </div>
+            </div> 
+          </div>
+
+
+
+      <div class="modal fade" id="cart" role="dialog">
         <div class="modal-dialog modal-lg">
-        
-          <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
+                <h4 style="color:#F38E58;"><i class="material-icons prefix">shopping_cart</i>&nbsp; My Cart</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-  
             <div class="modal-body">
-                <div class="row">
-                <div class="col-sm-4"></div>
-                
-                <div class="col-sm-4" style="padding-bottom: 10%; text-align: center;">
-                    <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" style=" width: 70%; height: 50%;" ><br/><br/>
-                    
+                <div class="col-sm-12" style="padding-bottom: 10%; text-align: center;">        
                     <form action="/action_page.php" class="was-validated">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="USERNAME" required> &nbsp;
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="PASSWORD"required> &nbsp; &nbsp; &nbsp;
-
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
+                      <table class="table table-striped table1">
+                          <thead>
+                              <tr>
+                                  <th>Product Name</th>
+                                  <th>Quantity</th>
+                                  <th>Price</th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Adidas Ultra Boost</td>
+                                  <td>2</td>
+                                  <td>6000</td>
+                                  <td>
+                                      <i class="material-icons form-control-rounded" (click)="deleteCustomer(customer._id)" style="cursor:pointer;">remove_circle</i>
+                                  </td>
+                                  <td></td>
+                              </tr>
+                          </tbody>
+                      </table>
                     <div style="margin-top: 5%;">
-
-                        <button type="button" class="btn btn-default" id="btnSignUp" routerLink="/signup" routerLinkActive="linkActive" data-dismiss="modal">SIGN UP</button> &nbsp;
-
-                        <button type="submit" class="btn btn-success" id="buttons">LOGIN</button>
+                        <button type="submit" class="btn btn-success form-control-rounded" >Buy Now
+                            <i class="material-icons prefix">attach_money</i>
+                        </button>
                     </div>
                     </form>
-                </div>
-                </div>
-            </div>
-          </div>  
-        </div>
+              </div>
+            </div>  
+          </div>
+        </div> 
       </div>
   
-  
-
+      
 
   <script>
         // Disable form submissions if there are invalid fields
@@ -245,4 +209,5 @@
             });
           }, false);
         })();
-        </script>
+
+  </script>

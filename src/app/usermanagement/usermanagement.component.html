@@ -1,39 +1,47 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
     <div class="col-xl-2">
-        <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo"
-            style=" width: 50%; height: 50%;">
+        <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo" style=" width: 50%; height: 50%;" >
     </div>
-
+  
     <div class="col-xl-8">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                    <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >Products</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" >Order List</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">User Management</a>
-            </li>
+      <ul class="navbar-nav">
+          <li class="nav-item"  style="width:13%;">
+            <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >
+              <i class="material-icons prefix"> star</i> 
+              Products</a>
+          </li>
+          <li class="nav-item" style="width:13%;">
+            
+            <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" > 
+              <i class="material-icons prefix"> business_center</i> 
+              Order List</a>
 
+          </li>
+          <li class="nav-item" style="width:20%;">
+            <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">
+              <i class="material-icons prefix">group</i> 
+              User Management</a>
+          </li>
+  
         </ul>
-    </div>
-    <div class="col-xl-2" id="navRight">
-        <ul class="navbar-nav">
-            <li class="nav-item" id="logindesign">
-                <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT</a>
-            </li>
-            <li class="nav-item">
-            </li>
-        </ul>
-    </div>
-</nav>
+      </div>
+      <div class="col-xl-2" id="navRight">
+          <ul class="navbar-nav" >
+              <li class="nav-item" id="logindesign">
+              <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">Logout 
+                <i class="material-icons prefix">exit_to_app</i> </a>
+              </li>
+              <li class="nav-item">
+              </li>
+          </ul>
+          </div>   
+    </nav>
 
 <div class="col-xl-11.5" id="main1" style="padding:5%">
-        <h1 style="font-family:cocogoose; color:rgb(226, 105, 19);
+        <h2 style="font-family:cocogoose; color:rgb(226, 105, 19);
         border-bottom: 1.5px solid #DDDFE2;
-        border-left: 1.5px solid #DDDFE2; padding: 1%;">List of all users</h1>
+        border-left: 1.5px solid #DDDFE2; padding: 1%;">List of all users</h2>
         <p style="font-family:calibri;">Welcome to shoepping Admin? 
             <a style="font-family:cocogoose; color:rgb(241, 146, 78); font-size: small;" routerLink="/signup" routerLinkActive="linkActive">Create it here</a>
         </p>
@@ -61,11 +69,21 @@
                         <td>{{customer.username}}</td>
                         <td>{{customer.password}}</td>
                         <td>{{customer.cusfName}}</td>
-                        <td>{{customer.cuslName}} </td>
+                        <td>{{customer.cuslName}}</td>
                         <td>{{customer.address}}</td>
-                        <td>{{customer.birthday}} </td>
-                        <td>{{customer.phone}} </td>
+                        <td>{{customer.birthday}}</td>
+                        <td>{{customer.phone}}</td>
                         <td>
+
+                        <!-- <td><input type="text" class="form-control" name="username" [(ngModel)]="username" value="{{customer.username}}"></td>
+                        <td><input type="text" class="form-control" name="password" [(ngModel)]="password" value="{{customer.password}}"></td>
+                        <td><input type="text" class="form-control" name="cusfName" [(ngModel)]="cusfName" value="{{customer.cusfName}}"></td>
+                        <td><input type="text" class="form-control" name="cuslName" [(ngModel)]="cuslName" value="{{customer.cuslName}}"></td>
+                        <td><input type="text" class="form-control" name="address" [(ngModel)]="address" value="{{customer.address}}"></td>
+                        <td><input type="text" class="form-control" name="birthday" [(ngModel)]="birthday" value="{{customer.birthday}}"></td>
+                        <td><input type="text" class="form-control" name="phone" [(ngModel)]="phone" value="{{customer.phone}}"></td>
+                        <td> -->
+
                             <i class="material-icons form-control-rounded" (click)="updateCustomer(customer._id)"  style="cursor:pointer; ">edit</i>
                         </td>
                         <td>
