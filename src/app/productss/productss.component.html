@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
     <div class="col-xl-2">
         <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo" style=" width: 50%; height: 50%;" >
@@ -6,7 +7,7 @@
     <div class="col-xl-8">
       <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >Products</a>
+            <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" >Order List</a>
@@ -20,7 +21,7 @@
       <div class="col-xl-2" id="navRight">
           <ul class="navbar-nav" >
               <li class="nav-item" id="logindesign">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#login">LOG OUT </a>
+              <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT </a>
               </li>
               <li class="nav-item">
               </li>
@@ -32,27 +33,64 @@
     </nav>
 
     <div class="col-xl-11.5" id="main1" style="padding:5%">
+
+            <h1 style="font-family:cocogoose; color:rgb(226, 105, 19);         border-bottom: 1.5px solid #DDDFE2;
+            border-left: 1.5px solid #DDDFE2; padding: 1%;">Add or Update products</h1>
+            <p style="font-family:calibri;">Welcome to shoepping Admin? 
+                <a style="font-family:cocogoose; color:rgb(241, 146, 78); font-size: small;" routerLink="/signup" routerLinkActive="linkActive">Create it here</a>
+            </p>
+            <br> 
+
         <div class="row">
             <div class="col-xl-1"></div>
             <div class="col-xl-10">
-                    <form #validForm="ngForm" (submit)="addProduct()">
-                            <br><h1>ADD OR UPDATE PRODUCT</h1> <br>
-                            <label>Product Name:</label>
-                             <input type="text"  placeholder="Insert Product Name" name="name" [(ngModel)]="name"  class="form-control" required > <br>
-                             <label>Product Brand:</label>
-                             <input type="text" placeholder="Insert Brand" name="brand" [(ngModel)]="brand" class="form-control" required> <br>
-                             <label>Product Price:</label>              
-                             <input type="number"  placeholder="Insert Price" name="price" [(ngModel)]="price" class="form-control" required > <br>
-                             <label>Quantity:</label>
-                             <input type="number" placeholder="Insert Quantity" name="quantity" [(ngModel)]="quantity" class="form-control" required > <br>
-                             <label>Insert Image:</label>
-                            <input type="file" onchange="preview_image(event)" name="image" [(ngModel)]="image" class="form-control" required > <br>
+                    <form #validForm="ngForm" (submit)="submitForm()">
+                            <label class="label1">Product Name:</label>
+                             <input type="text"  placeholder="Insert Product Name" name="name" [(ngModel)]="name"  class="form-control form-control-rounded" required > <br>
+                             <label class="label1">Product Brand:</label>
+                             <input type="text" placeholder="Insert Brand" name="brand" [(ngModel)]="brand" class="form-control form-control-rounded" required> <br>
+                             <label class="label1">Product Price:</label>              
+                             <input type="number"  placeholder="Insert Price" name="price" [(ngModel)]="price" class="form-control form-control-rounded" required > <br>
+                             <label class="label1">Quantity:</label>
+                             <input type="number" placeholder="Insert Quantity" name="quantity" [(ngModel)]="quantity" class="form-control form-control-rounded" required > <br>
+                             <label class="label1">Insert Image:</label> 
                       
+
+  <!-- Progress Bar -->
+ <!-- <div class="progress form-group" *ngIf="fileUploadService.percentDone">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+          [style.width.%]="fileUploadService.percentDone">
+        </div>
+      </div>
+    
+      // Image Preview 
+      <div class="form-group">
+        <div class="preview" *ngIf="preview && preview !== null">
+          <img [src]="preview" [alt]="form.value.name">
+        </div>
+      </div>
+    
+      /// File Input 
+      <div class="form-group">lgf
+        <input type="file" (change)="uploadFile($event)">
+      </div>
+    
+      /// Name 
+      <div class="form-group input-group-lg">
+        <input class="form-control" placeholder="Name" formControlName="name">
+      </div> -->
+    
+                             <input #file type="file" accept='image/*' (change)="preview(file.files)" name="image" [(ngModel)]="image" class="form-control-file" required />
+                            <img [src]="imgURL" height="200" *ngIf="imgURL" name="i" [(ngModel)]="i"> <br> <br> 
+
+                            <label class="label1">Descripion:</label> 
+                            <textarea class="form-control" rows="5" name="description" [(ngModel)]="description"></textarea> <br> 
                             
-                             <input type="submit" class="btn btn-success" *ngIf="validForm.valid" id="send">   &nbsp;
+                             <input type="submit" class="btn btn-success form-control-rounded" style="width: 10%;"  id="send"><br><br><br>
                            </form>
 
-                <table class="table table-striped">
+                <h1 style="font-family:cocogoose; color:rgb(226, 105, 19)">List of all products</h1><br>
+                <table class="table table-striped table1">
                     <thead>
                         <tr>
                             <th>Product Name</th>
@@ -70,12 +108,12 @@
                             <td>{{product.brand}} </td>
                             <td>{{product.price}}</td>
                             <td>{{product.quantity}}</td>
-                            <td>{{product.image}}</td>
+                            <td><img src="../../{{product.image}}" alt="123"></td>
                             <td>
-                                    <button (click)="updateProduct(product._id)" class="btn btn-success" id="buttons">Update</button>
-                                </td>
-                                <td>
-                                    <button (click)="deleteProduct(product._id)" class="btn btn-danger" >Delete</button>
+                              <i class="material-icons form-control-rounded" (click)="updateProduct(product._id)"  style="cursor:pointer; ">edit</i>
+                            </td>
+                            <td>
+                                <i class="material-icons form-control-rounded" (click)="deleteProduct(product._id)" style="cursor:pointer;">remove_circle</i>
                             </td>
                         </tr>
                     </tbody>

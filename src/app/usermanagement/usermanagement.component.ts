@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {CustomerService} from '../customer.service';
 import { Customer } from '../customer';
+import  swal  from 'sweetalert';
+import {AuthGuardService} from '../auth-guard.service';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class UsermanagementComponent {
   private birthday:String;
   private phone:Number;
 
-  constructor(private customerService:CustomerService){
+  constructor(private customerService:CustomerService, private authGuardService:AuthGuardService){
 
   }
   ngOnInit(){
@@ -49,10 +51,24 @@ export class UsermanagementComponent {
     });
   }
   
-  deleteCustomer(id){
-    this.customerService.deleteCustomer(id).subscribe((data)=>{
-      console.log(data);
-      this.getCustomers()
+  async deleteCustomer(id){
+
+    const willDelete = await swal({
+      title: "Are you sure do you want to delete?",
+      text: " Click outside if no",
+      icon: "warning",
+      dangerMode: true,
     });
-  }
+     
+    if (willDelete) {
+      this.customerService.deleteCustomer(id).subscribe((data)=>{
+        console.log(data);
+        this.getCustomers()
+      });
+      swal("Deleted!", "Item has been deleted!", "success");
+    } 
+
+
+
+  } 
 }

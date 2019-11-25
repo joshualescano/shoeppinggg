@@ -9,7 +9,7 @@
                     <a class="nav-link"  routerLink="/products" routerLinkActive="linkActive" >Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" >Order List</a>
+                  <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">Order List</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >User Management</a>
@@ -20,7 +20,7 @@
           <div class="col-xl-2" id="navRight">
               <ul class="navbar-nav" >
                   <li class="nav-item" id="logindesign">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#login">LOG OUT </a>
+                  <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT</a>
                   </li>
                   <li class="nav-item">
                   </li>

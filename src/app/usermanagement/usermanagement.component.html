@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
     <div class="col-xl-2">
         <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" id="logo"
@@ -13,7 +14,7 @@
                   <a class="nav-link" routerLink="/orderlist" routerLinkActive="linkActive" >Order List</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" >User Management</a>
+                  <a class="nav-link"  routerLink="/usermanagement" routerLinkActive="linkActive" style="color:rgb(241, 146, 78)">User Management</a>
             </li>
 
         </ul>
@@ -21,7 +22,7 @@
     <div class="col-xl-2" id="navRight">
         <ul class="navbar-nav">
             <li class="nav-item" id="logindesign">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#login">LOG OUT </a>
+                <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT</a>
             </li>
             <li class="nav-item">
             </li>
@@ -30,10 +31,18 @@
 </nav>
 
 <div class="col-xl-11.5" id="main1" style="padding:5%">
+        <h1 style="font-family:cocogoose; color:rgb(226, 105, 19);
+        border-bottom: 1.5px solid #DDDFE2;
+        border-left: 1.5px solid #DDDFE2; padding: 1%;">List of all users</h1>
+        <p style="font-family:calibri;">Welcome to shoepping Admin? 
+            <a style="font-family:cocogoose; color:rgb(241, 146, 78); font-size: small;" routerLink="/signup" routerLinkActive="linkActive">Create it here</a>
+        </p>
+        <br>
+
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-xl-10">
-            <table class="table">
+            <table class="table table-striped table1">
                 <thead>
                     <tr>
                         <th>Username</th>
@@ -43,6 +52,7 @@
                         <th>Address</th>
                         <th>Birthday</th>
                         <th>Phone</th>
+                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -56,10 +66,10 @@
                         <td>{{customer.birthday}} </td>
                         <td>{{customer.phone}} </td>
                         <td>
-                                <button (click)="updateCustomer(customer._id)" class="btn btn-success" id="buttons">Update</button>
-                            </td>
-                            <td>
-                                <button (click)="deleteCustomer(customer._id)" class="btn btn-danger" >Delete</button>
+                            <i class="material-icons form-control-rounded" (click)="updateCustomer(customer._id)"  style="cursor:pointer; ">edit</i>
+                        </td>
+                        <td>
+                            <i class="material-icons form-control-rounded" (click)="deleteCustomer(customer._id)" style="cursor:pointer;">remove_circle</i>
                         </td>
                     </tr>
                 </tbody>

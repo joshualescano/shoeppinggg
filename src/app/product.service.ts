@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  private url:string = "http://localhost:8080";
+  private url:string = "http://localhost:80";
   private headers = new HttpHeaders().set('Content-Type','application/json');
   
 
@@ -25,7 +25,19 @@ export class ProductService {
       product,
       { headers:this.headers}
     );
-  }
+  } 
+
+    // test 2
+    /*addProduct(name: string, profileImage: File): Observable<any> {
+      var formData: any = new FormData();
+      formData.append("name", name);
+      formData.append("image", profileImage);
+  
+      return this.http.post<any>(this.url + '/product', formData, {
+        reportProgress: true,
+        observe: 'events'
+      })
+    } */
 
   updateProduct(product: Product, id:string):Observable<Product>{
     return this.http.put<Product>(

@@ -5,10 +5,14 @@
       
         <div class="col-xl-8">
           <nav class="navbar navbar-expand-sm " >
-            <form class="form-inline" action="/action_page.php">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" id="searchBar">
-              <button class="btn btn-success" type="submit" id="buttons">Search</button>
-            </form>
+              <form class="form-inline" action="/action_page.php">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-rounded-search" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append ">
+                      <span class="input-group-text form-control-rounded-search" id="basic-addon2">Search</span>
+                    </div>
+                  </div>
+                </form>
           </nav>
           <ul class="navbar-nav">
               <li class="nav-item">
@@ -31,11 +35,12 @@
           </div>
           <div class="col-xl-2" id="navRight">
               <ul class="navbar-nav" >
+                  <li class="nav-item">username: </li>  
                   <li class="nav-item" id="logindesign">
                   <a class="nav-link" href="#" data-toggle="modal" data-target="#login">CART</a>
                   </li>
                   <li class="nav-item">
-                  <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" >LOG OUT</a>
+                  <a class="nav-link" routerLink="/home" routerLinkActive="linkActive" (click)="authGuardService.logoutUser()">LOG OUT</a>
                   </li>
               </ul>
               </div>      
@@ -194,12 +199,12 @@
                     
                     <form action="/action_page.php" class="was-validated">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="usr" placeholder="USERNAME" required> &nbsp;
+                        <input type="text" class="form-control" placeholder="USERNAME" required> &nbsp;
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" id="usr" placeholder="PASSWORD"required> &nbsp; &nbsp; &nbsp;
+                        <input type="password" class="form-control" placeholder="PASSWORD"required> &nbsp; &nbsp; &nbsp;
 
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>

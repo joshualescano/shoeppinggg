@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthGuardService} from '../auth-guard.service';
 
 @Component({
   selector: 'app-orderlist',
@@ -28,7 +29,7 @@ export class OrderlistComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private authGuardService:AuthGuardService) { }
 
   ngOnInit() {
   }

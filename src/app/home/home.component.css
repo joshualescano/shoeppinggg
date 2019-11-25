@@ -1,8 +1,4 @@
 
-a{
-    color: white;
-}
-
 #buttons{
     background-color:#f56b22;
     border-color: #f56b22;
@@ -81,9 +77,12 @@ body{
 #logindesign{
     background-color: teal;
 }
+html{
+    overflow-y: scroll;
+}
 
 
-
-.navbar{
-
+.form-control-rounded{
+    border-radius: 25px;
+    border-color: #E7F0F6;
 }

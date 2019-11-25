@@ -1,7 +1,7 @@
 export class Order{
     ordertID:Number;
-    customerID:Number;
-    productID:Number;
+    cusUsername:String;
+    prodName:String;
     orderQuantity:number;
     totalPrice:Number
 }

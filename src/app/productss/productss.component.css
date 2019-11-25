@@ -1,0 +1,17 @@
+.form-control-rounded{
+    border-radius: 25px;
+}
+
+.form-control-rounded:hover{
+    box-shadow: .5px 1px #888888;
+}
+.label1{
+    font-family: cocogoose;
+    color: #646F79;
+}
+.table1{
+    border:1px solid #DEE2E6;
+}
+html{
+    overflow-y: scroll;
+}

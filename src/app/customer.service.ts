@@ -2,15 +2,21 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Customer} from './customer';
 import {Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private url:string = "http://localhost:8080";
+  private url:string = "http://localhost:80";
   private headers = new HttpHeaders().set('Content-Type','application/json');
-  
+
+
+  authToken;
+  customer;
+  options;
 
   constructor(private http:HttpClient) { }
 
@@ -38,5 +44,12 @@ export class CustomerService {
  deleteCustomer(id:string){
     return this.http.delete(this.url + '/customer/' +id);
   }
+
+
+  login(customer):Observable<any[]>{
+    return this.http.get<any[]>(
+      this.url+'/customer/'+customer.username+'/'+customer.password,      
+    );
+  } 
 
 }

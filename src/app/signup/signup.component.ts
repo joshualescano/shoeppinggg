@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {CustomerService} from '../customer.service';
 import { Customer } from '../customer';
+import  swal  from 'sweetalert';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,13 +16,14 @@ export class SignupComponent {
   private customers:Customer[];
   private username:String;
   private password:String;
+  private confirm:String;
   private cusfName:String;
   private cuslName:String;
   private address:String;
   private birthday:String;
   private phone:Number;
 
-  constructor(private customerService:CustomerService){
+  constructor(private customerService:CustomerService,private router: Router){
 
   }
   ngOnInit(){
@@ -43,33 +46,31 @@ export class SignupComponent {
     customer.birthday = this.birthday;
     customer.phone = this.phone;
 
+    if(this.password != this.confirm){
+      swal("Error!", "password not match!", "error");
+    }
+    else{
+      this.customerService.addCustomer(customer).subscribe(res =>{
+        localStorage.setItem('token',res.token)
+      },
+      err => console.log(err)      
+      ) 
 
-    this.customerService.addCustomer(customer).subscribe((data)=>{
-      console.log(data);
-      this.getCustomers()
-    });
-  }
+      swal("Congratulations!", "Welcome to shoepping family!", "success");
 
-  updateCustomer(id){
-    var customer = new Customer();
-    customer.username = this.username;
-    customer.password = this.password;
-    customer.cusfName = this.cusfName;
-    customer.cuslName = this.cuslName;
-    customer.address = this.address; 
-    customer.birthday = this.birthday;
-    customer.phone = this.phone;
+      this.username = "";
+      this.password = "";
+      this.confirm = "";
+      this.cusfName = "";
+      this.cuslName = "";
+      this.address = "";
+      this.birthday = "";
+      this.phone = null;
 
-    this.customerService.updateCustomer(customer, id).subscribe((data)=>{
-      console.log(data);
-      this.getCustomers()
-    });
-  }
-  
-  deleteCustomer(id){
-    this.customerService.deleteCustomer(id).subscribe((data)=>{
-      console.log(data);
-      this.getCustomers()
-    });
+      setTimeout(() =>{
+        this.router.navigate(['/cushome']);
+       }, 2000);
+    }
+    
   }
 }

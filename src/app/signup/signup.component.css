@@ -71,3 +71,27 @@ body{
 #logindesign{
     background-color: teal;
 }
+
+.form-control-rounded{
+    border-radius: 25px;
+    border-color: #E7F0F6;
+}
+.form-control-rounded-search{
+    border-radius: 25px;
+    border-color: #E7F0F6;
+}
+
+.form-control-rounded{
+    border-radius: 25px;
+}
+
+.form-control-rounded:hover{
+    box-shadow: .5px 1px #888888;
+}
+.label1{
+    font-family: cocogoose;
+    color: #646F79;
+}
+html{
+    overflow-y: scroll;
+}

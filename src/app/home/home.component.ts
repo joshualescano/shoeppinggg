@@ -3,6 +3,7 @@ import {ProductService} from '../product.service';
 import { Product } from '../product';
 import {CustomerService} from '../customer.service';
 import { Customer } from '../customer';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class HomeComponent {
   private brand:String;
   private price:Number;
   private quantity:Number;
-  private image:String;
+  private image:File;
   private description:String;
 
   private customers:Customer[];
@@ -31,7 +32,11 @@ export class HomeComponent {
   private phone:Number;
 
 
-  constructor(private productService:ProductService, private customerService:CustomerService){}
+  constructor(
+    private productService:ProductService, 
+    private customerService:CustomerService,
+    private router: Router,
+    ){}
 
 
   ngOnInit(){
@@ -45,44 +50,6 @@ export class HomeComponent {
     });
   }
 
-  addProduct(){
-    var product = new Product();
-    product.name = this.name;
-    product.brand = this.brand;
-    product.price = this.price;
-    product.quantity = this.quantity;
-    product.image = this.image;
-    product.description = this.description; 
-
-
-    this.productService.addProduct(product).subscribe((data)=>{
-      console.log(data);
-      this.getProducts()
-    });
-  }
-
-  updateProduct(id){
-    var product = new Product();
-    product.name = this.name;
-    product.brand = this.brand;
-    product.price = this.price;
-    product.quantity = this.quantity;
-    product.image = this.image;
-    product.description = this.description; 
-
-    this.productService.updateProduct(product, id).subscribe((data)=>{
-      console.log(data);
-      this.getProducts()
-    });
-  }
-  
-  deleteProduct(id){
-    this.productService.deleteProduct(id).subscribe((data)=>{
-      console.log(data);
-      this.getProducts()
-    });
-  }
-
   ////////////////////// CUSTOMER //////////////////////////////////////
 
 getCustomers(){
@@ -90,6 +57,7 @@ getCustomers(){
     this.customers = data;
   });
 }
-}
 
+
+}
 
