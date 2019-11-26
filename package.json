@@ -12,9 +12,9 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.13",
-    "@angular/common": "^5.0.2",
+    "@angular/common": "^8.2.13",
     "@angular/compiler": "^8.2.13",
-    "@angular/core": "^5.0.2",
+    "@angular/core": "^8.2.13",
     "@angular/forms": "^5.0.2",
     "@angular/platform-browser": "^8.2.13",
     "@angular/platform-browser-dynamic": "^8.2.13",
@@ -29,13 +29,14 @@
     "module": "^1.2.5",
     "mongoose": "^5.7.12",
     "popper.js": "^1.16.0",
-    "rxjs": "~6.4.0",
+    "rxjs": "^6.4.0",
+    "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.18",
-    "@angular/cli": "^8.3.18",
+    "@angular/cli": "^8.3.19",
     "@angular/compiler-cli": "^8.2.13",
     "@angular/language-service": "^8.2.13",
     "@types/jasmine": "~3.3.8",
