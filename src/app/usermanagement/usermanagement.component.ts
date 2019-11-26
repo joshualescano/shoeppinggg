@@ -4,7 +4,7 @@ import { Customer } from '../customer';
 import  swal  from 'sweetalert';
 import {AuthGuardService} from '../auth-guard.service';
 
-
+///11
 @Component({
   selector: 'app-usermanagements',
   templateUrl: './usermanagement.component.html',

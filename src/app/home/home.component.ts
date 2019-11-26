@@ -50,15 +50,13 @@ export class HomeComponent {
     });
   }
 
-  getCustomers(){
-    this.customerService.getCustomers().subscribe((data)=>{
-      this.customers = data;
-    });
-  }
+  ////////////////////// CUSTOMER //////////////////////////////////////
 
-  redirectToLogin(){
-    this.router.navigate(['login'])
-  }
+getCustomers(){
+  this.customerService.getCustomers().subscribe((data)=>{
+    this.customers = data;
+  });
+}
 
 
 }
