@@ -1,11 +1,11 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="box-shadow: .2px 1px #888888;" >
     <div class="col-xl-2">
         <img src="../assets/image/logo.png" class="rounded" alt="Cinque Terre" routerLink="/home" routerLinkActive="linkActive"  id="logo" style=" width: 50%; height: 50%; cursor: pointer;" >
     </div>
   
-    <div class="col-xl-8">
+    <div class="col-xl-6">
         <nav class="navbar navbar-expand-sm " >
             <form class="form-inline" action="/action_page.php">
             <div class="input-group mb-3">
@@ -37,7 +37,7 @@
   
         </ul>
       </div>
-          <div class="col-xl-6" id="navRight">
+          <div class="col-xl-4" id="navRight" style=" padding-left: 9%; ">
               <ul class="navbar-nav" > 
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#login" name="cusUsername" [(ngModel)]="cusUsername" >{{username}}&nbsp;
@@ -56,7 +56,7 @@
    </nav>
         
 
-<div class="col-xl-12" id="main1">  
+<div class="col-xl-11.9" id="main1">  
     <h4 id="title"> DAILY DISCOVER</h4>
     <div class="col-xl-11" id="main2">
       <div class="row">
@@ -77,10 +77,11 @@
           </div>
         </div>
     </div>
-</div>
+  </div>
 
 
-      <div class="modal fade" id="selectItemModal" role="dialog">
+
+<!--       <div class="modal fade" id="selectItemModal" role="dialog">
           <div class="modal-dialog modal-lg" >
             <div class="modal-content" style="width: 120%;">
               <div class="modal-header">
@@ -141,11 +142,11 @@
                 </div>  
               </div>
             </div> 
-          </div>
+          </div> -->
 
 
 
-      <div class="modal fade" id="cart" role="dialog">
+    <!--   <div class="modal fade" id="cart" role="dialog">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -187,8 +188,7 @@
             </div>  
           </div>
         </div> 
-      </div>
-  
+      </div> -->
       
 
   <script>

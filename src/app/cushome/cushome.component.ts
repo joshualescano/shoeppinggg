@@ -49,6 +49,7 @@ export class CushomeComponent implements OnInit {
     
     getProducts(){
       this.productService.getProducts().subscribe((data)=>{
+        console.log(data);
         this.products = data;
       });
     }
@@ -75,7 +76,7 @@ export class CushomeComponent implements OnInit {
   
     //    swal("Congratulations!", "Thank you for trusting us!", "success");
   
-        this.orderQuantity = 1;
+      this.orderQuantity = 1;
 
 
     }

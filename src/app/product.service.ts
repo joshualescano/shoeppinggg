@@ -27,18 +27,6 @@ export class ProductService {
     );
   } 
 
-    // test 2
-    /*addProduct(name: string, profileImage: File): Observable<any> {
-      var formData: any = new FormData();
-      formData.append("name", name);
-      formData.append("image", profileImage);
-  
-      return this.http.post<any>(this.url + '/product', formData, {
-        reportProgress: true,
-        observe: 'events'
-      })
-    } */
-
   updateProduct(product: Product, id:string):Observable<Product>{
     return this.http.put<Product>(
       this.url + "/product/" + id,
@@ -55,4 +43,16 @@ export class ProductService {
     return this.http.get<any[]>
     (this.url + '/product'+id);
   }
+
+      // test 2
+    /*addProduct(name: string, profileImage: File): Observable<any> {
+      var formData: any = new FormData();
+      formData.append("name", name);
+      formData.append("image", profileImage);
+  
+      return this.http.post<any>(this.url + '/product', formData, {
+        reportProgress: true,
+        observe: 'events'
+      })
+    } */
  }

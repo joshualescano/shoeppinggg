@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "^8.2.13",
     "@angular/router": "^8.2.13",
     "@auth0/angular-jwt": "^3.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.2",
+    "ajv": "^6.0.0",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
