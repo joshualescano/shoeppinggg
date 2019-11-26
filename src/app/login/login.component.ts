@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {CustomerService} from '../customer.service';
 import { Customer } from '../customer';
 import { Router } from '@angular/router';
-import  swal  from 'sweetalert';
+//import  swal  from 'sweetalert';
 
 
 @Component({
@@ -58,7 +58,7 @@ getCustomers(){
 
     if(res.msg == user_ ){
       localStorage.setItem('token',res.token)
-       swal("Welcome Back!", "You can now update the inventory", "success");
+    //   swal("Welcome Back!", "You can now update the inventory", "success");
 
         setTimeout(() =>{
           this.router.navigate(['/products']);  
@@ -66,12 +66,12 @@ getCustomers(){
       } 
 
      if(res.msg=='err'){
-      swal("Error!", "username or password not correct!", "error");
+   //   swal("Error!", "username or password not correct!", "error");
      }
       else if(res.length!=0 && res.msg == "customer"){
         localStorage.setItem('token',res.token);
         localStorage.setItem('username',res.customer.username);
-        swal("Welcome!", "username and password match!", "success");
+     //   swal("Welcome!", "username and password match!", "success");
 
         setTimeout(() =>{
           this.router.navigate(['/cushome']);

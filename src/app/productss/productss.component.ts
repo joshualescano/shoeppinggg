@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ProductService} from '../product.service';
 import { Product } from '../product';
-import  swal  from 'sweetalert';
+//import  swal  from 'sweetalert';
 import {AuthGuardService} from '../auth-guard.service';
 
 //import {FileSelectDirective, FileUploader} from 'ng2-file-upload';
@@ -69,7 +69,7 @@ export class ProductssComponent {
       this.getProducts()
     });
 
-    swal("Good job!", "Item added!", "success");
+  //  swal("Good job!", "Item added!", "success");
     this.name = "";
     this.brand = "";
     this.price = null;
@@ -133,19 +133,19 @@ export class ProductssComponent {
   }
   
   async deleteProduct(id){
-      const willDelete = await swal({
+    /*  const willDelete = await swal({
         title: "Are you sure do you want to delete?",
         text: " Click outside if no",
         icon: "warning",
         dangerMode: true,
-      });
+      }); */
        
-      if (willDelete) {
+   //   if (willDelete) {
         this.productService.deleteProduct(id).subscribe((data)=>{
           console.log(data);
           this.getProducts()
         });
-        swal("Deleted!", "Item has been deleted!", "success");
+    //    swal("Deleted!", "Item has been deleted!", "success");
       } 
     } 
 
@@ -153,13 +153,14 @@ export class ProductssComponent {
 
   ///////////////////// IMAGE PREVIEW ///////////////////
 
-   preview(files) {
+  /* preview(files) {
     if (files.length === 0)
       return;
  
     var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
+    if (mimeType.match(/image\/*/
+      //) == null) {
+    /*  this.message = "Only images are supported.";
       return;
     }
  
@@ -169,7 +170,7 @@ export class ProductssComponent {
     reader.onload = (_event) => { 
       this.imgURL = reader.result; 
     }
-  } 
+  }  
 
 
-}
+} */

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {CustomerService} from '../customer.service';
 import { Customer } from '../customer';
-import  swal  from 'sweetalert';
+//import  swal  from 'sweetalert';
 import {AuthGuardService} from '../auth-guard.service';
 
 ///11
@@ -45,38 +45,38 @@ export class UsermanagementComponent {
     customer.birthday = this.birthday;
     customer.phone = this.phone;
 
-    const willUpdate = await swal({
+   /* const willUpdate = await swal({
       title: "Are you sure do you want to Update?",
       text: " Click outside if no",
       icon: "warning",
       dangerMode: true,
-    });
+    }); */
      
-    if (willUpdate) {
+ //   if (willUpdate) {
       this.customerService.updateCustomer(customer, id).subscribe((data)=>{
         console.log(data);
         this.getCustomers()
       });
-      swal("Updated!", "Item has been updated!", "success");
-    } 
+ //     swal("Updated!", "Item has been updated!", "success");
+ //   } 
   }
   
   async deleteCustomer(id){
 
-    const willDelete = await swal({
+  /*  const willDelete = await swal({
       title: "Are you sure do you want to delete?",
       text: " Click outside if no",
       icon: "warning",
       dangerMode: true,
-    });
+    }); */
      
-    if (willDelete) {
+  //  if (willDelete) {
       this.customerService.deleteCustomer(id).subscribe((data)=>{
         console.log(data);
         this.getCustomers()
       });
-      swal("Deleted!", "Item has been deleted!", "success");
-    } 
+   //   swal("Deleted!", "Item has been deleted!", "success");
+ //   } 
 
 
 

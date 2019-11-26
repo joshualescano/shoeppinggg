@@ -7,7 +7,7 @@ import {ProductService} from '../product.service';
 import {OrderService} from '../order.service';
 import { Product } from '../product';
 import { Order } from '../order';
-import  swal  from 'sweetalert';
+//import  swal  from 'sweetalert';
 
 @Component({
   selector: 'app-cushome',
@@ -73,7 +73,7 @@ export class CushomeComponent implements OnInit {
       err => console.log(err)      
       ) 
   
-        swal("Congratulations!", "Thank you for trusting us!", "success");
+    //    swal("Congratulations!", "Thank you for trusting us!", "success");
   
         this.orderQuantity = 1;
 
