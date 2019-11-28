@@ -259,7 +259,7 @@ app.post('/product', upload.single('image'),urlEncoded, (req, res, next) => {
         price: req.body.price,
         quantity: req.body.quantity,
         description: req.body.description,
-      //  image: '../assets/upload/' + req.file.image
+        image: '../assets/upload/' + req.body.image
     });
     product.save().then(result => {
       res.status(201).json({

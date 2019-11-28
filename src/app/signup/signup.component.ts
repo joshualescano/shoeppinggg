@@ -58,7 +58,7 @@ export class SignupComponent {
       ) 
 
 //      swal("Congratulations!", "Welcome to shoepping family!", "success");
-
+      alert("User Created");
       this.username = "";
       this.password = "";
       this.confirm = "";
@@ -68,7 +68,7 @@ export class SignupComponent {
       this.birthday = "";
       this.phone = null;
 
-        this.router.navigate(['/cushome']);
+        this.router.navigate(['/login']);
     }
   }
 }
