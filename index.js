@@ -139,7 +139,7 @@ const Product= mongoose.model('Product', {
     },
  });
  
-app.get('/customer',verifyToken, (req, res) => {
+app.get('/customer', (req, res) => {
     Customer.find({},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
@@ -259,7 +259,7 @@ app.post('/product', upload.single('image'),urlEncoded, (req, res, next) => {
         price: req.body.price,
         quantity: req.body.quantity,
         description: req.body.description,
-        image: '../assets/upload/' + req.body.image
+        image: '../assets/upload/' + req.image
     });
     product.save().then(result => {
       res.status(201).json({
@@ -296,21 +296,21 @@ app.delete('/product/:id',verifyToken, (req, res) => {
 
 
 /////////////////////// Order ////////////////////////////////////////
-app.get('/order',verifyToken, (req, res) => {
+app.get('/order', (req, res) => {
     Order.find({buyNow:true,approve:false},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
     });
 });
 
-app.get('/deliver',verifyToken, (req, res) => {
+app.get('/deliver',(req, res) => {
     Order.find({buyNow:true,approve:true},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
     });
 });
 
-app.get('/order/:cusUsername',verifyToken, (req, res) => {
+app.get('/order/:cusUsername', (req, res) => {
     Order.find({cusUsername:req.params.cusUsername,buyNow:false},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
