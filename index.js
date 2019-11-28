@@ -45,8 +45,8 @@ const cors = require('cors');
 app.use(cors());
 app.use('/uploads', express.static('uploads')); 
 
-//mongoose.connect('mongodb+srv://joshualescano:Akocjosh0831@cluster0-h6zxu.mongodb.net/test?retryWrites=true&w=majority', {useUnifiedTopology:true, useNewUrlParser:true});
-mongoose.connect('mongodb://localhost:27017/api', {useUnifiedTopology: true, useNewUrlParser: true});
+mongoose.connect('mongodb+srv://joshualescano:Akocjosh0831@cluster0-h6zxu.mongodb.net/test?retryWrites=true&w=majority', {useUnifiedTopology:true, useNewUrlParser:true});
+//mongoose.connect('mongodb://localhost:27017/api', {useUnifiedTopology: true, useNewUrlParser: true});
 
 // Make "public" Folder Publicly Available test 2
 //app.use('/public', express.static('public'));
