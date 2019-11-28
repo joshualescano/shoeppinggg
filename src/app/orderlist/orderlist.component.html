@@ -65,7 +65,7 @@
                         <td>{{order.orderQuantity}}</td>
                         <td>{{order.totalPrice}}</td>
                         <td>
-                            <i class="material-icons form-control-rounded"  style="cursor:pointer;">check_circle</i>
+                            <i class="material-icons form-control-rounded" (click)="approveOrder(order._id)" style="cursor:pointer;">check_circle</i>
                         </td>
                     </tr>
                 </tbody>
@@ -95,13 +95,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let order of orders">
-                    <td>{{order.cusUsername}}</td>
-                    <td>{{order.prodName}}</td>
-                    <td>{{order.orderQuantity}}</td>
-                    <td>{{order.totalPrice}}</td>
+                <tr *ngFor="let deliver of delivers">
+                    <td>{{deliver.cusUsername}}</td>
+                    <td>{{deliver.prodName}}</td>
+                    <td>{{deliver.orderQuantity}}</td>
+                    <td>{{deliver.totalPrice}}</td>
                     <td>
-                        <i class="material-icons form-control-rounded"  style="cursor:pointer;">remove_circle</i>
+                        <i class="material-icons form-control-rounded"  (click)="deleteOrder(deliver._id)" style="cursor:pointer;">remove_circle</i>
                     </td>
                 </tr>
             </tbody>

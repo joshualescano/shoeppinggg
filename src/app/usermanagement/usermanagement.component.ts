@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import {CustomerService} from '../customer.service';
 import { Customer } from '../customer';
-//import  swal  from 'sweetalert';
+
 import {AuthGuardService} from '../auth-guard.service';
 
-///11
 @Component({
   selector: 'app-usermanagements',
   templateUrl: './usermanagement.component.html',
@@ -23,7 +22,6 @@ export class UsermanagementComponent {
   private phone:Number;
 
   constructor(private customerService:CustomerService, private authGuardService:AuthGuardService){
-
   }
   ngOnInit(){
     this.getCustomers();
@@ -35,50 +33,45 @@ export class UsermanagementComponent {
     });
   }
 
-  async updateCustomer(id){
+  async updateCustomer(id,password,cusfName,cuslName,address,birthday,phone){
     var customer = new Customer();
-    customer.username = this.username;
-    customer.password = this.password;
-    customer.cusfName = this.cusfName;
-    customer.cuslName = this.cuslName;
-    customer.address = this.address; 
-    customer.birthday = this.birthday;
-    customer.phone = this.phone;
+    customer.password = password;
+    customer.cusfName = cusfName;
+    customer.cuslName = cuslName;
+    customer.address = address; 
+    customer.birthday = birthday;
+    customer.phone = phone;
 
-   /* const willUpdate = await swal({
-      title: "Are you sure do you want to Update?",
-      text: " Click outside if no",
-      icon: "warning",
-      dangerMode: true,
-    }); */
-     
- //   if (willUpdate) {
-      this.customerService.updateCustomer(customer, id).subscribe((data)=>{
-        console.log(data);
-        this.getCustomers()
-      });
- //     swal("Updated!", "Item has been updated!", "success");
- //   } 
+    if(password==""||cusfName==""||cuslName==""||address==""||birthday==""||phone==""){
+      window.alert("Please make sure that credentials are not empty!");
+    }
+    else{
+      if(phone.length!=11){
+        window.alert("Please make sure that phone number is valid");
+      }
+      else{
+        var a = window.confirm("Are you sure do you want to update this user?");
+        if(a){
+          
+          this.customerService.updateCustomer(customer, id).subscribe((data)=>{
+            console.log(data);
+            this.getCustomers()
+            window.alert("user updated!");
+          });
+        }
+      }
+    }
   }
   
   async deleteCustomer(id){
-
-  /*  const willDelete = await swal({
-      title: "Are you sure do you want to delete?",
-      text: " Click outside if no",
-      icon: "warning",
-      dangerMode: true,
-    }); */
-     
-  //  if (willDelete) {
+    var a = window.confirm("Are you sure do you want to remove this user?");
+    if(a){
       this.customerService.deleteCustomer(id).subscribe((data)=>{
         console.log(data);
-        this.getCustomers()
+        this.getCustomers();
+        window.alert("user deleted!");
       });
-   //   swal("Deleted!", "Item has been deleted!", "success");
- //   } 
-
-
-
+    }
+    this.getCustomers();
   } 
 }

@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Product} from './product';
 import {Observable} from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,14 +10,27 @@ export class ProductService {
   private url:string = "http://localhost:80";
   private headers = new HttpHeaders().set('Content-Type','application/json');
   
-
   constructor(private http:HttpClient) { }
 
-  getProducts():Observable<Product[]>{
-    return this.http.get<Product[]>
+  getProducts(){
+    return this.http.get<any[]>
     (this.url + '/product');
   }
 
+  getProducts2(){
+    return this.http.get<any[]>
+    (this.url + '/product');
+  }
+
+  searchBrand(brand){
+    return this.http.get<any[]>
+    (this.url + '/search'+brand);
+  }
+
+  searchName(name){
+    return this.http.get<any[]>
+    (this.url + '/search'+name);
+  }
   addProduct(product):Observable<any>{
     return this.http.post<any>(
       this.url + "/product",
@@ -43,16 +55,4 @@ export class ProductService {
     return this.http.get<any[]>
     (this.url + '/product'+id);
   }
-
-      // test 2
-    /*addProduct(name: string, profileImage: File): Observable<any> {
-      var formData: any = new FormData();
-      formData.append("name", name);
-      formData.append("image", profileImage);
-  
-      return this.http.post<any>(this.url + '/product', formData, {
-        reportProgress: true,
-        observe: 'events'
-      })
-    } */
  }

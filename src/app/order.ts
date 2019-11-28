@@ -3,6 +3,7 @@ export class Order{
     cusUsername:String;
     prodName:String;
     orderQuantity:Number;
-    totalPrice:Number
-    buyNow:Boolean
+    totalPrice:Number;
+    buyNow:Boolean;
+    approve:Boolean;
 }

@@ -43,9 +43,6 @@
 
             <h2 style="font-family:cocogoose; color:rgb(226, 105, 19);         border-bottom: 1.5px solid #DDDFE2;
             border-left: 1.5px solid #DDDFE2; padding: 1%;">Add or Update products</h2>
-            <p style="font-family:calibri;">Welcome to shoepping Admin? 
-                <a style="font-family:cocogoose; color:rgb(241, 146, 78); font-size: small;" routerLink="/signup" routerLinkActive="linkActive">Create it here</a>
-            </p>
             <br> 
 
         <div class="row">
@@ -125,7 +122,7 @@
                             <td>{{product.brand}} </td>
                             <td>{{product.price}}</td>
                             <td>{{product.quantity}}</td>
-                            <td><img src="../../{{product.image}}" alt="123"></td>
+                            <td><img src="{{product.image}}" alt="123" style="width: 100px; height: 100px ;"></td>
                             <td>
                               <i class="material-icons form-control-rounded" (click)="updateProduct(product._id)"  style="cursor:pointer; ">edit</i>
                             </td>

@@ -57,7 +57,7 @@ export class ProductssComponent {
     product.brand = this.brand;
     product.price = this.price;
     product.quantity = this.quantity;
-  // product.image = this.image;
+    product.image = this.image;
     product.description = this.description; 
 
   //  const formData = new FormData();
@@ -69,7 +69,6 @@ export class ProductssComponent {
       this.getProducts()
     });
 
-  //  swal("Good job!", "Item added!", "success");
     this.name = "";
     this.brand = "";
     this.price = null;
@@ -133,19 +132,14 @@ export class ProductssComponent {
   }
   
   async deleteProduct(id){
-    /*  const willDelete = await swal({
-        title: "Are you sure do you want to delete?",
-        text: " Click outside if no",
-        icon: "warning",
-        dangerMode: true,
-      }); */
-       
-   //   if (willDelete) {
-        this.productService.deleteProduct(id).subscribe((data)=>{
-          console.log(data);
-          this.getProducts()
-        });
-    //    swal("Deleted!", "Item has been deleted!", "success");
+    var a = window.confirm("Are you sure do you want to remove this item?");
+        if(a){
+          this.productService.deleteProduct(id).subscribe((data)=>{
+            console.log(data);
+            this.getProducts()
+          });
+        }
+        this.getProducts()
       } 
     } 
 

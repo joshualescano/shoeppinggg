@@ -42,11 +42,7 @@
         <h2 style="font-family:cocogoose; color:rgb(226, 105, 19);
         border-bottom: 1.5px solid #DDDFE2;
         border-left: 1.5px solid #DDDFE2; padding: 1%;">List of all users</h2>
-        <p style="font-family:calibri;">Welcome to shoepping Admin? 
-            <a style="font-family:cocogoose; color:rgb(241, 146, 78); font-size: small;" routerLink="/signup" routerLinkActive="linkActive">Create it here</a>
-        </p>
         <br>
-
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-xl-10">
@@ -67,24 +63,14 @@
                 <tbody>
                     <tr *ngFor="let customer of customers">
                         <td>{{customer.username}}</td>
-                        <td>{{customer.password}}</td>
-                        <td>{{customer.cusfName}}</td>
-                        <td>{{customer.cuslName}}</td>
-                        <td>{{customer.address}}</td>
-                        <td>{{customer.birthday}}</td>
-                        <td>{{customer.phone}}</td>
-                        <td>
-
-                        <!-- <td><input type="text" class="form-control" name="username" [(ngModel)]="username" value="{{customer.username}}"></td>
-                        <td><input type="text" class="form-control" name="password" [(ngModel)]="password" value="{{customer.password}}"></td>
-                        <td><input type="text" class="form-control" name="cusfName" [(ngModel)]="cusfName" value="{{customer.cusfName}}"></td>
-                        <td><input type="text" class="form-control" name="cuslName" [(ngModel)]="cuslName" value="{{customer.cuslName}}"></td>
-                        <td><input type="text" class="form-control" name="address" [(ngModel)]="address" value="{{customer.address}}"></td>
-                        <td><input type="text" class="form-control" name="birthday" [(ngModel)]="birthday" value="{{customer.birthday}}"></td>
-                        <td><input type="text" class="form-control" name="phone" [(ngModel)]="phone" value="{{customer.phone}}"></td>
-                        <td> -->
-
-                            <i class="material-icons form-control-rounded" (click)="updateCustomer(customer._id)"  style="cursor:pointer; ">edit</i>
+                        <td><input type="text" class="form-control" #password value="{{customer.password}}"></td>
+                        <td><input type="text" class="form-control" #cusfName value="{{customer.cusfName}}" onkeyup="this.value=this.value.replace(/[^a-zA-Z ]+/,'')" required></td>
+                        <td><input type="text" class="form-control" #cuslName value="{{customer.cuslName}}" onkeyup="this.value=this.value.replace(/[^a-zA-Z ]+/,'')" required></td>
+                        <td><input type="text" class="form-control" #address value="{{customer.address}}" onkeyup="this.value=this.value.replace(/[^a-zA-Z ]+/,'')"></td>
+                        <td><input type="date" class="form-control" #birthday value="{{customer.birthday}}" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="11" minlength="11" required></td>
+                        <td><input type="text" class="form-control" #phone value="{{customer.phone}}" onkeyup="this.value=this.value.replace(/[^\d]/,'')" required></td>          
+                        <td> 
+                            <i class="material-icons form-control-rounded" (click)="updateCustomer(customer._id, password.value, cusfName.value, cuslName.value, address.value, birthday.value, phone.value)"  style="cursor:pointer; ">edit</i>
                         </td>
                         <td>
                             <i class="material-icons form-control-rounded" (click)="deleteCustomer(customer._id)" style="cursor:pointer;">remove_circle</i>

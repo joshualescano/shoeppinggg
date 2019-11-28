@@ -17,6 +17,11 @@ export class OrderService {
     (this.url + '/order');
   }
 
+  deliverOrders():Observable<Order[]>{
+    return this.http.get<Order[]>
+    (this.url + '/deliver');
+  }
+
   addOrder(order):Observable<any>{
     return this.http.post<any>(
       this.url + "/order",
@@ -25,9 +30,35 @@ export class OrderService {
     );
   } 
 
-  updateOrder(order: Order, id:string):Observable<Order>{
+  addToCart(cart):Observable<any>{
+    return this.http.post<any>(
+      this.url + "/order",
+      cart,
+      { headers:this.headers}
+    );
+  } 
+
+  viewCart(username){
+    return this.http.get<any[]>(
+      this.url+'/order/'+username,      
+    );
+  }
+
+  removeToCart(id:string){
+    return this.http.delete(this.url + '/order/' +id);
+  }
+
+  approveOrder(order: Order, id:string):Observable<Order>{
     return this.http.put<Order>(
-      this.url + "/order/" + id,
+      this.url + "/approve/" + id,
+      order,
+      { headers:this.headers}
+    );
+  }
+
+  buyNowProducts(order: Order, username:string):Observable<Order>{
+    return this.http.put<Order>(
+      this.url + "/order/" + username,
       order,
       { headers:this.headers}
     );

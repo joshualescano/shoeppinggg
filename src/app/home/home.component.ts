@@ -58,6 +58,46 @@ getCustomers(){
   });
 }
 
+searchAdidas(){
+  var brand = "adidas";
+  this.productService.searchBrand(brand).subscribe((data)=>{
+    this.products = data;
+  });
+}
+
+searchNike(){
+  var brand = "nike";
+  this.productService.searchBrand(brand).subscribe((data)=>{
+    this.products = data;
+  });
+}
+
+searchVans(){
+  var brand = "vans";
+  this.productService.searchBrand(brand).subscribe((data)=>{
+    this.products = data;
+  });
+}
+
+searchSketchers(){
+  var brand = "sketchers";
+  this.productService.searchBrand(brand).subscribe((data)=>{
+    this.products = data;
+  });
+}
+
+searchSperry(){
+  var brand = "sperry";
+  this.productService.searchBrand(brand).subscribe((data)=>{
+    this.products = data;
+  });
+}
+searchByName(name){
+  alert(name);
+  this.productService.searchName(name).subscribe((data)=>{
+    this.products = data;
+  });
+}
 
 }
 

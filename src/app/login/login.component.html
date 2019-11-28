@@ -19,28 +19,18 @@
           <br>
           
     <form class="was-validated" (submit)="doLogin()" #loginForm="ngForm" >
-
         <div class="form-group">
             <i class="material-icons prefix">account_circle</i> &nbsp;
             <label class="label1">Username:</label>
             <input type="text"  class="form-control form-control-rounded" placeholder="Your registered username" name="username" [(ngModel)]="username" required> &nbsp;
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
-        
-       <!-- <div class="input-group mb-3">
-            <input type="text" class="form-control form-control-rounded" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <div class="input-group-prepend">
-                <span class="input-group-text logoUsername">@</span>
-              </div>
-          </div> -->
-
         <div class="form-group">
             <i class="material-icons prefix">vpn_key</i> &nbsp;
             <label class="label1">Password:</label>
             <input type="password" class="form-control form-control-rounded" placeholder="Your password" name="password" [(ngModel)]="password" required> &nbsp; &nbsp; &nbsp;
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
-
         <div class="col-xl-12" style="margin-top: 5%; text-align: right;">
             <button type="submit" class="btn btn-success form-control-rounded" style="width: 40%;" id="buttons">LOGIN &nbsp;
                  <i class="tiny material-icons right" >input</i>

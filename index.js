@@ -10,7 +10,7 @@ var jwt = require ('jsonwebtoken');
 /////// test 1 //////////////////////////
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './uploads/');
+        cb(null, './src/assets/upload');
     },
     filename: function(req, file, cb) {
         const now = new Date().toISOString(); const date = now.replace(/:/g, '-'); cb(null, date + file.originalname);
@@ -45,8 +45,8 @@ const cors = require('cors');
 app.use(cors());
 app.use('/uploads', express.static('uploads')); 
 
-mongoose.connect('mongodb+srv://joshualescano:Akocjosh0831@cluster0-h6zxu.mongodb.net/test?retryWrites=true&w=majority', {useUnifiedTopology:true, useNewUrlParser:true});
-
+//mongoose.connect('mongodb+srv://joshualescano:Akocjosh0831@cluster0-h6zxu.mongodb.net/test?retryWrites=true&w=majority', {useUnifiedTopology:true, useNewUrlParser:true});
+mongoose.connect('mongodb://localhost:27017/api', {useUnifiedTopology: true, useNewUrlParser: true});
 
 // Make "public" Folder Publicly Available test 2
 //app.use('/public', express.static('public'));
@@ -129,9 +129,17 @@ const Product= mongoose.model('Product', {
     type: Number,
     require: true,
     },
+    buyNow: {
+        type: Boolean,
+        require: true,
+        },
+    approve: {
+        type: Boolean,
+        require: true,
+    },
  });
  
-app.get('/customer', (req, res) => {
+app.get('/customer',verifyToken, (req, res) => {
     Customer.find({},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
@@ -161,7 +169,7 @@ app.post('/customer', urlEncoded, (req, res) => {
     });
 });
 
-app.put('/customer/:id', urlEncoded, (req, res) => {
+app.put('/customer/:id',verifyToken, urlEncoded, (req, res) => {
     Customer.updateOne({_id:req.params.id},{
       username: req.body.username,
       password: req.body.password,
@@ -176,20 +184,12 @@ app.put('/customer/:id', urlEncoded, (req, res) => {
     });
 });
 
-app.delete('/customer/:id', (req, res) => {
+app.delete('/customer/:id',verifyToken, (req, res) => {
     Customer.deleteOne({_id:req.params.id},(err,data) => {
     if(err) res.json({msg:'Invalid Request'});
         res.json(data);
     });
 });
-
-/*app.get('/customer/:username/:password', (req, res) =>{
-    Customer.find({username:req.params.username, password:req.params.password},(err, 
-        data) => {
-            if(err) res.json({"msg":"Invalid Request"});
-            res.json(data);
-        });
-}); */
 
 app.get('/customer/:username/:password', (req, res, next) =>{
     Customer.findOne({username:req.params.username, password:req.params.password},(err, 
@@ -225,19 +225,43 @@ app.get('/product', (req, res) => {
     });
 });
 
+app.get('/product:id', (req, res) => {
+    Product.findOne({_id:req.params.id},(err, data) => {
+    if(err) res.json({"msg":"Invalid Request"});
+        res.json(data);
+    });
+});
+
+app.get('/search:brand', (req, res) => {
+    Product.find({brand:req.params.brand},(err, data) => {
+    if(err) res.json({"msg":"Invalid Request"});
+        res.json(data);
+    });
+});
+app.get('/search:name', (req, res) => {
+    Product.find({name:req.params.name},(err, data) => {
+    if(err) res.json({"msg":"Invalid Request"});
+        res.json(data);
+    });
+});
+
 ////////////// test 1////////////
 app.post('/product', upload.single('image'),urlEncoded, (req, res, next) => {
     const url = req.protocol + '://' + req.get('host')
+    
+   // var path = req.body.image;
+   // var filename = path.replace(/^.*\\/, "");
+   // console.log(filename);
+
     const product = new Product({
         name: req.body.name,
         brand: req.body.brand,
         price: req.body.price,
         quantity: req.body.quantity,
         description: req.body.description,
-     //   image: url + '/public/' + req.file.filename
+      //  image: '../assets/upload/' + req.file.image
     });
     product.save().then(result => {
-      console.log(result);
       res.status(201).json({
         message: "User registered successfully!",
       })
@@ -253,7 +277,7 @@ app.put('/product/:id', urlEncoded,verifyToken, (req, res) => {
     Product.updateOne({_id:req.params.id},{
         name: req.body.name,
         brand: req.body.brand,
-         price: req.body.price,
+        price: req.body.price,
         quantity: req.body.quantity,
         image: req.body.image,
         description: req.body.description,
@@ -272,8 +296,22 @@ app.delete('/product/:id',verifyToken, (req, res) => {
 
 
 /////////////////////// Order ////////////////////////////////////////
-app.get('/order', (req, res) => {
-    Order.find({},(err, data) => {
+app.get('/order',verifyToken, (req, res) => {
+    Order.find({buyNow:true,approve:false},(err, data) => {
+    if(err) res.json({"msg":"Invalid Request"});
+        res.json(data);
+    });
+});
+
+app.get('/deliver',verifyToken, (req, res) => {
+    Order.find({buyNow:true,approve:true},(err, data) => {
+    if(err) res.json({"msg":"Invalid Request"});
+        res.json(data);
+    });
+});
+
+app.get('/order/:cusUsername',verifyToken, (req, res) => {
+    Order.find({cusUsername:req.params.cusUsername,buyNow:false},(err, data) => {
     if(err) res.json({"msg":"Invalid Request"});
         res.json(data);
     });
@@ -285,7 +323,8 @@ app.post('/order',verifyToken, urlEncoded, (req, res) => {
         prodName: req.body.prodName,
         orderQuantity: req.body.orderQuantity,
         totalPrice: req.body.totalPrice,
-        buyNow: req.body.buyNow
+        buyNow: req.body.buyNow,
+        approve: req.body.approve
     });
     order.save((err, data) => {
         if(err) res.json({"msg":"Invalid Request"});
@@ -293,12 +332,19 @@ app.post('/order',verifyToken, urlEncoded, (req, res) => {
     });
 });
 
-app.put('/order/:id',verifyToken, urlEncoded, (req, res) => {
-    Order.updateOne({_id:req.params.id},{
-        cusUsername: req.body.cusUsername,
-        prodName: req.body.prodName,
-        orderQuantity: req.body.orderQuantity,
-        totalPrice: req.body.totalPrice,
+app.put('/order/:cusUsername',verifyToken, urlEncoded, (req, res) => {
+    Order.updateMany({cusUsername:req.params.cusUsername},{
+        buyNow:req.body.buyNow
+
+    }, (err, data) => {
+        if(err) res.json({msg:'Invalid request'});
+            res.json(data);
+    });
+});
+
+app.put('/approve/:id',verifyToken, urlEncoded, (req, res) => {
+    Order.updateOne({_id:req.params.id,buyNow:true},{
+        approve:req.body.approve
 
     }, (err, data) => {
         if(err) res.json({msg:'Invalid request'});
@@ -312,6 +358,7 @@ app.delete('/order/:id',verifyToken, (req, res) => {
         res.json(data);
     });
 });
+
 
 function verifyToken(req,res,next){
     if(!req.headers.authorization){
@@ -329,12 +376,9 @@ function verifyToken(req,res,next){
     next()
 }
 
-
-//////////////////// IN  CASE OF  EMERGENCY ////////////////////////////
-// app.use(cors()); /////
-
-const PORT = process.env.PORT || 80;
-
-app.listen(PORT, () =>{
+const PORT = 80;
+app.listen(PORT,(err) => {
+    if(err) throw err;
     console.log(`Server running at port ${PORT}`);
-}) 
+    }
+);

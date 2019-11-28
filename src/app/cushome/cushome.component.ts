@@ -7,7 +7,6 @@ import {ProductService} from '../product.service';
 import {OrderService} from '../order.service';
 import { Product } from '../product';
 import { Order } from '../order';
-//import  swal  from 'sweetalert';
 
 @Component({
   selector: 'app-cushome',
@@ -15,7 +14,6 @@ import { Order } from '../order';
   styleUrls: ['./cushome.component.css']
 })
 export class CushomeComponent implements OnInit {
-
 
   private products:Product[];
   private name:String;
@@ -35,6 +33,8 @@ export class CushomeComponent implements OnInit {
   private totalPrice:Number;
   private buyNow:Boolean;
 
+  private carts:Order[];
+
   constructor(
      private customerService:CustomerService,
      private authGuardService:AuthGuardService,
@@ -45,40 +45,118 @@ export class CushomeComponent implements OnInit {
     this.getProducts();
     const customer= this.authGuardService.getToken();
     this.username = this.authGuardService.getUsername();
+    this.viewCart(this.username);
     }
     
     getProducts(){
       this.productService.getProducts().subscribe((data)=>{
-        console.log(data);
         this.products = data;
       });
     }
+    
     
     selectItem(id){
       this.productService.selectItem(id).subscribe((data)=>{
         this.products2 = data;
       });
-    }
+    } 
 
-    addtoCart(){
-      var order = new Order();
-      order.cusUsername = this.cusUsername;
-      order.prodName = this.prodName;
-      order.orderQuantity = this.orderQuantity;
-      order.totalPrice = this.totalPrice;
-      order.buyNow = false; 
-
-      this.orderService.addOrder(order).subscribe(res =>{
-      //  localStorage.setItem('token',res.token)
+    addtoCart(cusUsername, prodName, orderQuantity, totalPrice){
+      var order = {
+        cusUsername:cusUsername,
+        prodName:prodName,
+        orderQuantity:orderQuantity,
+        totalPrice:totalPrice,
+        buyNow:false,
+        approve:false
+      }
+      this.orderService.addToCart(order).subscribe(res =>{
       },
       err => console.log(err)      
       ) 
   
-    //    swal("Congratulations!", "Thank you for trusting us!", "success");
-  
       this.orderQuantity = 1;
-
-
+      this.viewCart(cusUsername);
     }
 
+    viewCart(username){
+      this.orderService.viewCart(username).subscribe((data)=>{
+      this.carts = data; 
+      });
+    }
+
+    buyNowProducts(username){
+      var order = new Order();
+      order.buyNow=true
+      
+      var a = window.confirm("Are you sure do you want this items?");
+      if(a){
+      this.orderService.buyNowProducts(order,username).subscribe((data)=>{
+        console.log(data);
+        window.alert("Thank you for trusting us!");
+        this.viewCart(username);
+        });
+      }
+    } 
+
+    async removeToCart(id){
+      var a = window.confirm("Are you sure do you want to remove this item?");
+      if(a){
+        this.orderService.removeToCart(id).subscribe((data)=>{
+        });
+        this.viewCart(this.username);
+      }
+      this.viewCart(this.username);
+
+    } 
+
+    async deleteOrder(id){
+      var a = window.confirm("Are you sure do you want to remove this order?");
+      if(a){
+          this.orderService.deleteOrder(id).subscribe((data)=>{
+            console.log(data);
+          });
+
+        } 
+      }
+
+      searchAdidas(){
+        var brand = "adidas";
+        this.productService.searchBrand(brand).subscribe((data)=>{
+          this.products = data;
+        });
+      }
+      
+      searchNike(){
+        var brand = "nike";
+        this.productService.searchBrand(brand).subscribe((data)=>{
+          this.products = data;
+        });
+      }
+      
+      searchVans(){
+        var brand = "vans";
+        this.productService.searchBrand(brand).subscribe((data)=>{
+          this.products = data;
+        });
+      }
+      
+      searchSketchers(){
+        var brand = "sketchers";
+        this.productService.searchBrand(brand).subscribe((data)=>{
+          this.products = data;
+        });
+      }
+      
+      searchSperry(){
+        var brand = "sperry";
+        this.productService.searchBrand(brand).subscribe((data)=>{
+          this.products = data;
+        });
+      }
+      searchByName(name){
+        this.productService.searchName(name).subscribe((data)=>{
+          this.products = data;
+        });
+      }
 }

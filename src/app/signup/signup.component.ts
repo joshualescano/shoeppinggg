@@ -52,6 +52,7 @@ export class SignupComponent {
     else{
       this.customerService.addCustomer(customer).subscribe(res =>{
         localStorage.setItem('token',res.token)
+        localStorage.setItem('username',res.customer.username);
       },
       err => console.log(err)      
       ) 
@@ -67,9 +68,7 @@ export class SignupComponent {
       this.birthday = "";
       this.phone = null;
 
-      setTimeout(() =>{
         this.router.navigate(['/cushome']);
-       }, 2000);
     }
   }
 }
